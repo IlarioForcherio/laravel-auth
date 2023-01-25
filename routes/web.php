@@ -35,7 +35,7 @@ Route::middleware('auth')
 ->group(function(){
 
     Route::get('/', "HomeController@index")->name('index');
-    //Aggiunta CRUD
+    //Aggiunta controller delle CRUD
     Route::resource('/posts', "PostsController");
 
 });

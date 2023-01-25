@@ -14,7 +14,11 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('admin.posts.index');
+        $posts = Post::paginate(3);
+        //con paginate crea delle pagine in caso in cui gli elementi siano tanti
+        //funziona con il metodo links(), vedi index.blade.php
+        //funziona solo importando l'ultima versione di bootstrap da cdn
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -46,7 +50,9 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $singolo_post = Post::findOrFail($id);
+
+        return view('admin.posts.show', compact('singolo_post', $singolo_post->$id));
     }
 
     /**

@@ -16,7 +16,7 @@ class PostSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
 
        $new_post = new Post();
-       $new_post->title = $faker->words(20,true);
+       $new_post->title = $faker->words(5,true);
        $new_post->body = $faker->words(20,true);
        $new_post->save();
         }
