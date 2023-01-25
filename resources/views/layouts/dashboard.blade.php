@@ -35,8 +35,9 @@
                     <ul class="navbar-nav mr-auto">
                         {{-- CRUD --}}
                         {{-- creo un li con un tag a con la rotta dei posts, inizia con il prefix  --}}
+                        {{-- reindirizza al PostController --}}
                         <li>
-                            <a href="{{'admin.posts.index'}}">Lista dei post</a>
+                            <a href="{{route('admin.posts.index')}}">Lista dei post</a>
                         </li>
                     </ul>
 
