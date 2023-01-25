@@ -33,7 +33,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        {{-- CRUD --}}
+                        {{-- creo un li con un tag a con la rotta dei posts, inizia con il prefix  --}}
+                        <li>
+                            <a href="{{'admin.posts.index'}}">Lista dei post</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
