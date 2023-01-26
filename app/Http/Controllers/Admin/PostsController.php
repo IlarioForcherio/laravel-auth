@@ -39,7 +39,22 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $data =  $request->all();
+       //la validazione(campi required), sara' presente in @error in create.blade
+       $request->validate([
+        'title' => 'required',
+        'body' => 'required',
+       ]);
+
+       //una volta ricevuta una risposta si procere all'istanza di un nuovo record
+       //si usa la funzione fill() per riempire le colonne automaticamente (bisogna renderle prima fillable dal modello)
+       $new_post = new Post();
+       $new_post->fill($data);
+       //salvare sempre
+       $new_post->save();
+
+       return redirect()->route('admin.posts.index');
+
     }
 
     /**
@@ -63,7 +78,8 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post_edit = Post::findOrFail($id);
+        return view('admin.posts.edit', compact('post_edit'));
     }
 
     /**
@@ -75,7 +91,12 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data =  $request->all();
+        $post_update = Post::findOrFail($id);
+        //mi recupero l'id e con update() effettuo effettivamente la modifica
+        $post_update->update($data);
+
+        return redirect()->route('admin.posts.show', $post_update->id);
     }
 
     /**
@@ -86,6 +107,11 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post_destroy =  Post::findOrFail($id);
+
+        $post_destroy->delete();
+        //mi recupero l'id e con delete() effettuo effettivamente la modifica
+        return redirect()->route('admin.posts.index',  $post_destroy->id);
+
     }
 }

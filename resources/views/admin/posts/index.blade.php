@@ -1,12 +1,13 @@
 @extends('layouts.dashboard')
+
 {{-- yield del contenuto in dashboard - main --}}
-{{-- creare la connessione un web.php --}}
+{{-- creare la connessione in web.php --}}
 @section('content')
 <div class="text-center" >
  <h1>Pagina dei post</h1>
 
  {{-- Funzione Create--}}
- <a href="admin.posts.create" class="btn btn-warning mt-4">Crea un nuovo Post</a>
+ <a href="{{route("admin.posts.create")}}" class="btn btn-warning mt-4">Crea un nuovo Post</a>
 </div>
 
 

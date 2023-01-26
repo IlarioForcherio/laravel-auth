@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+//dicitura per usare Faker
 use Faker\Generator as Faker;
 use App\Model\Post;
 class PostSeeder extends Seeder
